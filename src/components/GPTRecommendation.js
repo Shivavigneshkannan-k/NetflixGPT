@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { OPTIONS } from "../utils/constants";
-import { useEffect, useState } from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {OPTIONS} from "../utils/constants";
+import {useState} from "react";
 import MovieCard from "./MovieCard";
 import Shimmer from "./ShimmerUI/Shimmer";
-import { changeSearchState } from "../utils/gptSlice";
+import {changeSearchState} from "../utils/gptSlice";
 
-const GPTRecommendation = (movie) => {
+const GPTRecommendation = () => {
   const movies = useSelector((store) => store.gpt.MoviesRecommendation);
   const searchState = useSelector((store) => store.gpt.searchState);
   const dispatch = useDispatch();
@@ -25,8 +25,7 @@ const GPTRecommendation = (movie) => {
         console.log("fetch error");
         return;
       }
-      const json = await data.json();
-      return json;
+      return await data.json();
     };
     dispatch(changeSearchState(3));
 
